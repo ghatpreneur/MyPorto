@@ -1,0 +1,435 @@
+:root {
+  --bg-dark: #0f172a;
+  --bg-darker: #0c1427;
+  --primary: #1a73e8;
+  --secondary: #4285f4;
+  --accent: #60a5fa;
+  --text-light: #f8f9fa;
+  --text-gray: #cbd5e1;
+  --card-bg: #1e293b;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero */
+.hero {
+  padding: 10rem 0 6rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Profile Frame — untuk ilustrasi vector */
+.profile-frame {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 50px rgba(59, 130, 246, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.profile-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.profile-frame:hover .profile-art {
+  transform: scale(1.05);
+}
+
+/* Efek "cermin" seperti di ilustrasi kamu (opsional) */
+.profile-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 70%),
+    linear-gradient(135deg, transparent, rgba(255,255,255,0.08) 50%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.profile-frame:hover {
+  box-shadow: 
+    0 25px 60px rgba(59, 130, 246, 0.4),
+    0 0 30px rgba(59, 130, 246, 0.25),
+    inset 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #fff, #ddd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 2px solid var(--secondary);
+  color: var(--text-light);
+}
+
+.btn.small {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn.small:hover {
+  color: var(--primary);
+  text-decoration: underline;
+  transform: translateX(3px);
+}
+
+.hero-spacer {
+  height: 2.5rem; /* jarak antara CTA dan counter */
+}
+
+/* Stats Counter */
+/* Stats Counter — versi lebih lega & berani */
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem; /* diperlebar dari 2.5rem → 3rem */
+  margin: 3rem 0 4rem; /* lebih banyak ruang atas/bawah */
+  text-align: center;
+}
+
+.stat-item {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 1.4rem 1.8rem;
+  border-radius: 16px;
+  min-width: 140px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.6rem; /* lebih besar */
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  font-weight: 500;
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+
+/* Section */
+.section {
+  padding: 6rem 0;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: var(--transition);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(59, 130, 246, 0.25);
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1.2rem;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+}
+
+.card:hover .card-icon {
+  transform: translateY(-5px) rotate(5deg);
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--primary);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: var(--text-light);
+}
+
+.card p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Tech Icons Grid — FIVELY style */
+.tech-icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.2rem;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tech-icon-card {
+  background: rgba(30, 41, 59, 0.65);
+  border-radius: 16px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  width: 120px;
+}
+
+.tech-icon-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.tech-icon img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tech-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-light);
+  margin-top: 0.6rem;
+  line-height: 1.4;
+}
+
+/* Footer */
+.footer {
+  background: rgba(0,0,0,0.2);
+  padding: 3rem 0;
+  margin-top: 4rem;
+}
+
+.social-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.8rem;
+  justify-content: center;
+}
+
+/* Ganti .social-links a jadi .social-link */
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #ccc;
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.social-link img {
+  filter: brightness(0.8) contrast(1.2);
+  transition: transform 0.3s;
+}
+
+.social-link:hover {
+  color: var(--primary);
+  transform: translateX(2px);
+}
+
+.social-link:hover img {
+  filter: brightness(1) contrast(1.5);
+  transform: scale(1.1);
+}
+
+/* Base animation — durasi default (bisa di-override per section) */
+.animate-section > .container > * {
+  opacity: 0;
+}
+
+/* Durasi untuk Work Experience & Certificates — lebih lambat */
+.animate-section.up > .container > *,
+.animate-section.down > .container > * {
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+/* Durasi untuk Tech Stack — lebih cepat (karena banyak card) */
+.animate-section.left-right > .container > * {
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animate-section.up > .container > * {
+  transform: translateY(30px);
+}
+
+.animate-section.down > .container > * {
+  transform: translateY(-30px);
+}
+
+.animate-section.left-right > .container > * {
+  transform: translateX(-30px);
+}
+
+.animate-section.visible > .container > * {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+/* Stagger untuk Tech Stack (khusus .tech-icon-card) */
+.animate-section.left-right.visible .tech-icon-card:nth-child(1) { transition-delay: 0.1s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(2) { transition-delay: 0.2s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(3) { transition-delay: 0.3s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(4) { transition-delay: 0.4s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(5) { transition-delay: 0.5s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(6) { transition-delay: 0.6s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(7) { transition-delay: 0.7s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(8) { transition-delay: 0.8s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(9) { transition-delay: 0.9s; }
+.animate-section.left-right.visible .tech-icon-card:nth-child(10) { transition-delay: 1.0s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: 6rem 0 4rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tech-icons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
